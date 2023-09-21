@@ -21,7 +21,7 @@ $signed_in_nav_bar = '<nav class="navbar navbar-expand-lg navbar-light bg-light"
             <a class="nav-link" href="#">Upload</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="logout.php">Logout</a>
         </li>
         <!-- Display user initials in a circular frame when signed in -->
         <li class="nav-item">
