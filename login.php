@@ -7,6 +7,20 @@ if (isset($_SESSION['name'])) {
     return;
 }
 
+// print_r($_POST);
+// return;
+
+// If submit value is cancel, redirect to index.php
+if (isset($_POST['submit']) && $_POST['submit'] == 'cancel') {
+    header('Location: index.php');
+    return;
+}
+
+// if submit value is sign up, redirect to signup.php
+if (isset($_POST['submit']) && $_POST['submit'] == 'signup') {
+    header('Location: signup.php');
+    return;
+}
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     unset($_SESSION['name']);
@@ -25,14 +39,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
 
 
-    $salt = 'XyZzy12*_';
-    $check = hash('md5', $salt . $_POST['password']);
-    $stmt = $conn->prepare('SELECT id, first_name FROM users WHERE email = :em AND password = :pw');
+    $salt = '&*(yuFT*_';
+    $check = hash('sha256', $salt . $_POST['password']);
+    $stmt = $conn->prepare('SELECT id, first_name, last_name FROM users WHERE email = :em AND password = :pw');
     $stmt->execute(array(':em' => $_POST['email'], ':pw' => $check));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row !== false) {
         $_SESSION['name'] = $row['first_name'];
         $_SESSION['user_id'] = $row['id'];
+        $_SESSION['initials'] = substr($row['first_name'], 0, 1) . substr($row['last_name'], 0, 1);
         error_log("Login success " . $_POST['email']);
         header('Location: index.php');
         return;
@@ -69,7 +84,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 <body>
     <div class="container">
         <div class="row vertical-center">
-            <div class="col-sm-4"></div>
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-header text-center">
@@ -101,7 +115,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                         <div class="row">
                                             <button value="login" type="submit" class="btn btn-lg btn-primary col-sm-4 mt-3">LOGIN</button>
                                             <div class="col-sm-4"></div>
-                                            <button value="cancel" type="submit" class="btn btn-lg btn-danger col-sm-4 mt-3">CANCEL</button>
+                                            <button value="cancel" name="submit" type="submit" class="btn btn-lg btn-danger col-sm-4 mt-3">CANCEL</button>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +123,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-2"></div>
-                                            <button type="submit" class="btn btn-lg btn-primary  col-sm-12 mt-3">SIGN UP</button>
+                                            <button type="submit" name="submit" value="signup" class="btn btn-lg btn-primary  col-sm-12 mt-3">SIGN UP</button>
                                             <div class="col-sm-2"></div>
                                         </div>
                                     </div>
@@ -117,7 +131,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                         </form>
                     </div>
                 </div>
-                <div class="col-sm-4"></div>
             </div>
         </div>
 
