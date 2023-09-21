@@ -24,13 +24,14 @@ $password = $dbcreds['password'];
 $port = $dbcreds['port'];
 
 // connection string
-$connection_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password}";
+$connection_string = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
 
 // connect to db
-$connect = pg_connect($connection_string);
+$conn = new PDO($connection_string);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // check connection
-// if (!$connect)
+// if (!$conn)
 // {
 //     echo "Error: Unable to open database\n";
 // } else
