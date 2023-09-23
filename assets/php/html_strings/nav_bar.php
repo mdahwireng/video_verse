@@ -2,7 +2,7 @@
 session_start();
 
 $signed_in_nav_bar = '<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="#">VideoVerse</a>
+<a class="navbar-brand" href="index.php">VideoVerse</a>
 
 <!-- Toggler/collapsible Button -->
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,13 +12,13 @@ $signed_in_nav_bar = '<nav class="navbar navbar-expand-lg navbar-light bg-light"
 <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#">Explore</a>
+            <a class="nav-link explore_active" href="explore.php">Explore</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">History</a>
+            <a class="nav-link history_active" href="history.php">History</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Upload</a>
+            <a class="nav-link upload_active" href="upload.php">Upload</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="logout.php">Logout</a>
@@ -33,7 +33,7 @@ $signed_in_nav_bar = '<nav class="navbar navbar-expand-lg navbar-light bg-light"
 ' ;
 
 $signed_out_nav_bar =  '<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="#">VideoVerse</a>
+<a class="navbar-brand" href="index.php">VideoVerse</a>
 
 <!-- Toggler/collapsible Button -->
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,13 +43,13 @@ $signed_out_nav_bar =  '<nav class="navbar navbar-expand-lg navbar-light bg-ligh
 <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#">Explore</a>
+            <a class="nav-link explore_active" href="explore.php">Explore</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="login.php">Sign In</a>
+            <a class="nav-link login_active" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="signup.php">Sign Up</a>
+            <a class="nav-link signup_active" href="signup.php">Sign Up</a>
         </li>
     </ul>
 </div>

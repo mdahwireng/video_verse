@@ -1,6 +1,10 @@
 <?php
 require_once 'assets/php/connections/pdo.php';
-session_start();
+require_once 'assets/php/html_strings/nav_bar.php';
+require_once 'assets/php/utils.php';
+
+
+// session_start();
 
 // if (isset($_POST['first_name'])){
 //     print_r($_POST);
@@ -11,6 +15,8 @@ if (isset($_SESSION['name'])) {
     header('Location: index.php');
     return;
 }
+
+$nav = setActiveNav('signup', $nav);
 
 if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email'])) {
     unset($_SESSION['name']);
@@ -119,6 +125,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
     <title>Login</title>
 </head>
 <body>
+<?php echo $nav; ?>
     <div class="container">
         <div class="row vertical-center">
             <form method="post">

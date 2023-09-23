@@ -1,11 +1,16 @@
 <?php
 require_once 'assets/php/connections/pdo.php';
-session_start();
+require_once 'assets/php/html_strings/nav_bar.php';
+require_once 'assets/php/utils.php';
+
+// session_start();
 
 if (isset($_SESSION['name'])) {
     header('Location: index.php');
     return;
 }
+
+$nav = setActiveNav('login', $nav);
 
 // print_r($_POST);
 // return;
@@ -82,6 +87,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 </head>
 
 <body>
+<?php echo $nav; ?>
     <div class="container">
         <div class="row vertical-center">
             <div class="col-sm-6">
