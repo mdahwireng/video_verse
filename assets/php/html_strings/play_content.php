@@ -1,5 +1,5 @@
 <?php
-$video_player = '<video class="video-player-frame" controls id="videoElement">
+$video_player = '<video class="video-player-frame" controls id="videoElement" data-played="false" vid=":vid">
                     <source src=":vpath" type="video/mp4">
                 </video>
                 <h5>:title</h5>';

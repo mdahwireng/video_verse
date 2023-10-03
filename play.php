@@ -23,6 +23,7 @@ $video = $stmt->fetch(PDO::FETCH_ASSOC);
 // format player html
 $video_player = str_replace(":vpath", $video["vid_path"], $video_player);
 $video_player = str_replace(":title", $video["vid_name"], $video_player);
+$video_player = str_replace(":vid", $vid_for_player, $video_player);
 
 
 // split tags
@@ -165,14 +166,68 @@ foreach ($recommended_videos as $recommended_video) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         // JavaScript code to track video views
-    const video = document.getElementById('videoElement'); // Get the video element
+    // const video = document.getElementById('videoElement'); // Get the video element
 
-    video.addEventListener('play', () => {
-        console.log('Video started playing');
-        console.log(video.currentTime); // Get the current time of the video
-    });
+    // video.addEventListener('play', () => {
+    //     console.log('Video started playing');
+    //     console.log(video.currentTime); // Get the current time of the video
+    // });
 
-    console.log(video); // Get the current time of the video
+    // console.log(video); // Get the current time of the video
+
+
+    // Get the video element by ID
+const videoElement = document.getElementById('videoElement');
+
+// Add an event listener for the 'play' event
+videoElement.addEventListener('play', function() {
+    // Check if the video has not been played in this view
+    const hasNotBeenPlayed = videoElement.getAttribute('data-played') === 'false';
+
+    if (hasNotBeenPlayed) {
+        // Get the video ID (replace with your logic to retrieve the video ID)
+        const videoId = videoElement.getAttribute('vid');
+
+        // Send an AJAX request to record the play event
+        recordPlayEvent(videoId);
+
+        // Set the 'data-played' attribute to 'true' to prevent multiple plays from being recorded
+        videoElement.setAttribute('data-played', 'true');
+    }
+});
+
+// Function to send an AJAX request to record the play event
+function recordPlayEvent(videoId) {
+    // Create an XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // Define the URL of the PHP script that records the play event
+    const url = 'views.php';
+
+    // Define the data to send in the AJAX request, video id and datetime video started playing
+    var playTime = new Date();
+
+
+    const data = `videoId=${videoId}&start=${new Date().getTime()}`;
+
+    console.log(data);
+
+    // Configure the AJAX request
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Handle the response (optional)
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Handle the response from the server (if needed)
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Send the AJAX request
+    xhr.send(data);
+}
+
 
     </script>
 </body>
