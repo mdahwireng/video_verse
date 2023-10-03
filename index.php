@@ -64,7 +64,7 @@ require_once('assets/php/html_strings/nav_bar.php');
     <div class="landing-container">
         <h1>Welcome to VideoVerse</h1>
         <p>Your very own video hub</p>
-        <button type="button" href="explore.php" class="btn btn-primary btn-lg">Explore</button>
+        <a role="button" href="explore.php" class="btn btn-primary btn-lg">Explore</a>
     </div>
 </body>
 </html>
