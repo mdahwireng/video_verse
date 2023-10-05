@@ -6,7 +6,7 @@ require_once 'assets/php/utils.php';
 // session_start();
 
 if (isset($_SESSION['name'])) {
-    header('Location: index.php');
+    header('Location: dashboard.php');
     return;
 }
 
@@ -54,7 +54,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['initials'] = substr($row['first_name'], 0, 1) . substr($row['last_name'], 0, 1);
         error_log("Login success " . $_POST['email']);
-        header('Location: index.php');
+        header('Location: dashboard.php');
         return;
     } else {
         $_SESSION['error'] = 'Incorrect password or email.';

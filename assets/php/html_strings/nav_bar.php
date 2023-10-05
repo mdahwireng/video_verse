@@ -12,10 +12,10 @@ $signed_in_nav_bar = '<nav class="navbar navbar-expand-lg navbar-light bg-light"
 <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link explore_active" href="explore.php">Explore</a>
+            <a class="nav-link dashboard_active" href="dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link history_active" href="history.php">History</a>
+            <a class="nav-link explore_active" href="explore.php">Explore</a>
         </li>
         <li class="nav-item">
             <a class="nav-link upload_active" href="upload.php">Upload</a>

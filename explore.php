@@ -123,6 +123,15 @@ foreach ($videos as $video) {
             margin-top: 20px; /* Add spacing between rows */
             padding-top: 20px; /* Add space between row borders and row content */
         }
+        .user-initials {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
     </style>
 </head>
 <body>
