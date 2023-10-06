@@ -90,7 +90,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
     if ($row !== false) {
         $_SESSION['name'] = $row['first_name'];
         $_SESSION['user_id'] = $row['id'];
-        $_SESSION['initials'] = $row['first_name'][0] . $row['first_name'][1];
+        $_SESSION['initials'] = $row['first_name'][0] . $row['last_name'][0];
         error_log("Sign up success " . $_POST['email']);
         header('Location: index.php');
         return;
