@@ -137,10 +137,10 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
                 echo '<p class="text-danger">' . $_SESSION['error'] . '</p>';
                 unset($_SESSION['error']);
             }
-            if (isset($_SESSION['success'])) {
-                echo '<p class="text-success">' . $_SESSION['success'] . '</p>';
-                unset($_SESSION['success']);
-            }
+            // if (isset($_SESSION['success'])) {
+            //     echo '<p class="text-success">' . $_SESSION['success'] . '</p>';
+            //     unset($_SESSION['success']);
+            // }
             ?>
                 
               <div class="row">
