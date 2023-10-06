@@ -12,7 +12,7 @@ ELSE vid_views
 END) AS vid_views
 FROM videos AS v
 LEFT JOIN views_ag AS va
-	ON v.id = va.vid_views
+	ON v.id = va.video_id
 INNER JOIN thumbnails AS th 
 	ON v.thumbnail = th.id
 INNER JOIN accesses AS ac
