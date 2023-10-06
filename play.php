@@ -145,6 +145,15 @@ foreach ($recommended_videos as $recommended_video) {
             cursor: pointer;
             z-index: 1; /* Ensure play button appears above card content */
         }
+        .user-initials {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
     </style>
 </head>
 <body>
