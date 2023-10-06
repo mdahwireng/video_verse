@@ -81,7 +81,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
     ));
     $_SESSION['success'] = "Account created successfully";
 
-    $stmt = $conn->prepare('SELECT id, first_name FROM users WHERE email = :em AND password = :pw');
+    $stmt = $conn->prepare('SELECT id, first_name, last_name FROM users WHERE email = :em AND password = :pw');
     $stmt->execute(array(
         ':em' => $_POST['email'],
         ':pw' => $check
@@ -90,7 +90,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
     if ($row !== false) {
         $_SESSION['name'] = $row['first_name'];
         $_SESSION['user_id'] = $row['id'];
-        $_SESSION['initials'] = $row['first_name'][0] . $row['last_name'][0];
+        $_SESSION['initials'] = substr($row['first_name'], 0, 1) . substr($row['last_name'], 0, 1);
         error_log("Sign up success " . $_POST['email']);
         header('Location: index.php');
         return;
